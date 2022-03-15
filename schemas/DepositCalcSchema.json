@@ -1,0 +1,25 @@
+{
+    "$schema": "http://json-schema.org/schema",
+    "type": "object",
+    "properties": {
+        "date": {
+            "type": "string"
+        },
+        "periods": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 60
+        },
+        "amount": {
+            "type": "integer",
+            "minimum": 10000,
+            "maximum": 3000000
+        },
+        "rate": {
+            "type": "number",
+            "minimum": 1,
+            "maximum": 8
+        }
+    },
+    "required": ["date", "periods", "amount", "rate"]
+}
