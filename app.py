@@ -6,7 +6,7 @@ from flask import jsonify, request
 from jsonschema import validate, ValidationError
 
 from logger import get_logger
-from settings import schemas, config
+from settings.app_settings import schemas, config
 
 import features
 
@@ -24,7 +24,7 @@ def handle_exceptions(func):
         try:
             return func(*args, **kwargs)
         except (json.JSONDecodeError, json.decoder.JSONDecodeError,
-                ValidationError) as e:
+                ValidationError, ValueError) as e:
             logger.exception(f'{func.__name__}() got invalid data: {e}')
             return jsonify({'error': f'Invalid data: {e}'}), 400
         except Exception as e:
@@ -57,6 +57,8 @@ def execute_flask_config():
         app.config[key] = value
 
 
+execute_flask_config()
+
+
 if __name__ == '__main__':
-    execute_flask_config()
     app.run('0.0.0.0', port=5000)

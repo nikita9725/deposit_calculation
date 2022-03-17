@@ -45,14 +45,16 @@ Deposit calculation service - это приложение, написанное 
 `pip3 install -r requirements.txt`
 - Проведение тестов и получение отчета по ним
 `coverage run -m unittest discover && coverage report -m`
-- Запуск приложения
+- Запуск приложения в отладочном режиме режиме
 `python3 app.py`
+- Запуск приложения через сервер gunicorn в продовом режиме
+`gunicorn app:app :<Желаемый порт запуска>`
 
-2. Запуск в Docker контейнере из образа Dockerfile. В данном случае при сборке образа будут автоматически проведены тесты.
+2. Запуск в Docker контейнере из образа Dockerfile. В данном случае при сборке образа будут автоматически проведены тесты и приложение будет запущено в продовом режиме через сервер gunicorn
 - Сборка Dokcer образа
 `sudo docker build -t deposit_calculation:<tag> .`
 - Запуск контейнера
-`sudo docker run -p <Желаемый порт запуска>:5000 --name=deposit_calculation deposit_calculation:<tag>`
+`sudo docker run -p <Желаемый порт запуска>:80 --name=deposit_calculation deposit_calculation:<tag>`
 При добавлении флага `-d` к команде, контейнер будет запущен в фоновом режиме.
 
 **Внимание!

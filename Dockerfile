@@ -9,4 +9,4 @@ WORKDIR /app
 # Running tests
 RUN coverage run -m unittest discover && coverage report -m
 
-CMD python3 /app/app.py
+CMD gunicorn app:app -b :80 --log-config settings/gunicorn_logging.conf

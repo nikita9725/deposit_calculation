@@ -3,7 +3,7 @@ import sys
 import logging
 from logging import handlers
 
-from settings import config
+from settings.app_settings import config
 
 
 def get_logger(name):

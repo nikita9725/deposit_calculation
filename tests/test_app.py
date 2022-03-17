@@ -2,7 +2,7 @@ from unittest import TestCase
 from jsonschema import validate, ValidationError
 
 from app import app
-from settings import config, schemas
+from settings.app_settings import config, schemas
 
 from tests.test_objects.test_requests_data import wrong_input_data_list
 from tests.test_objects.amounts import input_data ,output_data
